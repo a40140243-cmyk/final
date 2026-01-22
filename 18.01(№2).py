@@ -29,11 +29,11 @@ class ProductParser:
             return []
 
         products = []
-        # картки товарів: article.product_pod
+
         items = self.soup.select("article.product_pod")[:10]
 
         def clean_number(text):
-            # ціна у форматі '£51.77' — беремо тільки цифри і крапку
+
             text = (text or "").strip()
             num, dot = "", False
             for ch in text:
@@ -96,7 +96,6 @@ class ProductParser:
             print(o)
         print(f"\nЗагальна сума до сплати: {total} грн")
 
-# запуск (сторінка з товарами, стабільна HTML-верстка)
 url = "https://books.toscrape.com/catalogue/category/books_1/index.html"
 obj = ProductParser(url)
 obj.auditSite()
@@ -106,4 +105,3 @@ if site:
     obj.buy(site)
 else:
     print("Жодної інформації не отримано з сайту")
-
